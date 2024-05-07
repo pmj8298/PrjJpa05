@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2 style="color:blue" data-id="4" data-commentid="없는 글자">Hello World1</h2>
+	<h2 style="color:blue" data-id="4" data-commentid="없는 글자">Hello World2</h2>
+	<p>큰 글자를 클릭하면 배경색이 노란색이 됩니다</p>
+	
+	<script>
+	  //const h2Els = document.getElementsByTagName('h2') // Elements- <h2> 태그가 두개라서 s가 붙음
+	  const h2Els = document.querySelectorAll('h2') 
+	  
+	  console.dir(h2Els[0])
+	  console.log(h2Els[0])
+	  
+	  h2Els.forEach((h2El, i) => {
+		  h2El.onclick = function(){
+			// const el = event.target; // 클릭한 h2, event.target == this
+		  	// console.dir(event);
+			// alert(el.innerHTML)
+			alert(this.innerHTML) // 원래 function(event) 일케 적었었는데 function() event를 빼고 싶으면 빼고 this를 적으면 된다, this == 클릭한 h2
+			// this.style.background-color = 'red' // error - 왼쪽에 - 적으면 빼기로 인식해서 에러뜸
+			// this.style.backgroundColor = 'yellow' // 동작함
+			this.style['background-color'] = 'yellow'
+		  }  
+	  });
+	  
+	  /* old문법
+	  for(let i=0;i<h2Els.length;i++){
+	  h2Els[i].addEventListener('click', function() {
+		  alert(h2Els[i].innerHTML)
+	    })
+	  }
+	  */
+	 // alert(h2El.dataset.commentid)
+	</script>
+</body>
+</html>
